@@ -1,0 +1,129 @@
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css");
+
+body {
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    box-sizing: border-box;
+    height: 100vh;
+    width: 100wh;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+sub {
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+fieldset {
+    margin: 20px 0;
+    padding: 20px 20px 30px 20px;
+    display: grid;
+}
+
+.floatingIcon {
+    position: absolute;
+    padding: 10px;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.floatingIcon i {
+    cursor: pointer;
+}
+
+.floatingIcon.active {
+    border-color: white;
+}
+
+.floatingIcon > :last-child {
+    margin: 15px;
+}
+
+.settingsPanel {
+    top: 20px;
+    left: 20px;
+}
+
+.settingsPanel label {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    margin: 7px 0;
+}
+
+.infoPanel {
+    top: 20px;
+    right: 20px;
+    text-align: right;
+}
+
+.infoPanel > div {
+    text-align: left;
+}
+
+.infoPanel b {
+    margin-right: 15px;
+}
+
+.ticketContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ticketNormal,
+.ticketPreferential {
+    font-size: min(40vw, 300px);
+    font-weight: bold;
+    margin: 0.3vw 0;
+}
+
+.label {
+    font-size: 3vw;
+    margin: 0.3vw 0;
+    font-weight: bold;
+}
+
+.ticketNormal {
+    color: red;
+}
+
+.ticketPreferential {
+    color: lime;
+}
+
+.hidden {
+    display: none;
+}
+
+.blink {
+    animation: blink 1s linear 2;
+}
+
+/* ================================== */
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+    51% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

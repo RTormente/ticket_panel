@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <link rel="stylesheet" href="./index.css" />
+
+        <script type="text/javascript" src="./index.js" defer></script>
+
+        <title>Painel de Senha</title>
+    </head>
+
+    <body>
+        <div id="settingsPanel" class="floatingIcon settingsPanel">
+            <i id="iconSettingsPanel" class="fa-solid fa-gear"></i>
+
+            <form id="formSettingsPanel" class="hidden">
+                <fieldset>
+                    <legend>Senhas:</legend>
+                    <label>
+                        Normal:
+                        <input type="number" name="inNormalTicket" id="inNormalTicket" min="0" max="999" />
+                    </label>
+                    <label>
+                        Preferencial:
+                        <input type="number" id="inPreferTicket" name="inPreferTicket" min="0" max="999" />
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Voz:</legend>
+                    <label>
+                        Tipo:
+                        <select name="inVoiceList" id="inVoiceList">
+                            <option value="mute">Mudo</option>
+                        </select>
+                    </label>
+                    <label>
+                        Velocidade:
+                        <input type="range" name="inVoiceRate" id="inVoiceRate" min="0.5" max="2" step="0.1" />
+                    </label>
+                    <label>
+                        Tom:
+                        <input type="range" name="inVoicePitch" id="inVoicePitch" min="0" max="2" step="0.1" />
+                    </label>
+                </fieldset>
+
+                <button type="reset" value="Salvar">Restaurar</button>
+            </form>
+        </div>
+
+        <div id="infoPanel" class="floatingIcon infoPanel">
+            <i id="iconInfoPanel" class="fa-solid fa-circle-info"></i>
+
+            <div class="hidden">
+                <h3>Teclas de operação</h3>
+
+                <ul>
+                    <li>
+                        <p><b>+</b> Proxima senha normal</p>
+                    </li>
+
+                    <li>
+                        <p><b>.</b> Proxima senha preferencial</p>
+                    </li>
+
+                    <li>
+                        <p><b>/</b> Senha normal Anterior</p>
+                    </li>
+
+                    <li>
+                        <p><b>*</b> Senha preferencial anterior</p>
+                    </li>
+
+                    <li>
+                        <p><b>-</b> Repete senha normal</p>
+                    </li>
+
+                    <li>
+                        <p><b>,</b> Repete senha preferencial</p>
+                    </li>
+                </ul>
+
+                <img src="./keyboard.jpg" alt="teclado para iliustração">
+            </div>
+        </div>
+
+        <div class="ticketContainer">
+            <div class="label">NORMAL:</div>
+            <div class="ticketNormal" id="ticketNormal">000</div>
+            <div class="label">PREFERENCIAL:</div>
+            <div class="ticketPreferential" id="ticketPreferential">P000</div>
+        </div>
+    </body>
+</html>
