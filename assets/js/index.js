@@ -43,9 +43,10 @@ function callTicket(type) {
         setTimeout(() => {
             beep(1000, beepDuration);
 
-            setTimeout(() => {
-                speakTicket(type, type == "P" ? configs.preferentialTicket : configs.normalTicket);
-            }, beepDuration);
+            if (document.getElementById("inVoiceList").selectedOptions[0].value != "mute")
+                setTimeout(() => {
+                    speakTicket(type, type == "P" ? configs.preferentialTicket : configs.normalTicket);
+                }, beepDuration);
         }, beepDuration);
     }, beepDuration);
 
