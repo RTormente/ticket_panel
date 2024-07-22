@@ -22,7 +22,7 @@ Neste estado inicial o projeto roda de forma integral no local de abertura, não
 
 </div>
 
-## IInstrução de uso
+## Instrução de uso
 
 É possível usá-lo diretamente neste endereço:
 
@@ -35,7 +35,9 @@ cd ticket_panel
 
 Agora, basta abrir o `index.html` no navegador de preferência.
 
-OBS: O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialmente terá que desabilitar este recurso ou apertar `Esc` sempre que for voltar uma senha comum.
+Em versões reduzidas do Linux, para se ter a leitura dos números, será necessária a instalação do pacote `speech-dispatcher`
+
+O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialmente terá que desabilitar este recurso ou apertar `Esc` sempre que for voltar uma senha comum.
 
 ## Features
 
