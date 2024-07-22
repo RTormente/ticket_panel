@@ -22,27 +22,27 @@ Neste estado inicial o projeto roda de forma integral no local de abertura, não
 
 </div>
 
-## Instrução de uso
+## IInstrução de uso
 
-É possivel usálo diretamente neste indereço:
+É possível usá-lo diretamente neste endereço:
 
-Ou localmente usando eestes comandos
+Ou localmente usando estes comandos:
 
 ```bash
 git clone https://github.com/RTormente/ticket_panel.git
 cd ticket_panel
 ```
 
-Agora basta abrir o `index.html` no navegador de preferencia.
+Agora, basta abrir o index.html no navegador de preferência.
 
-OBS: O FireFox faz uso do `/` para buscas rapidas portanto nele inicialmente terá que desabilitar este recurso ou apertar `Esc` semmpre que voltar uma senha comum.
+OBS: O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialmente terá que desabilitar este recurso ou apertar Esc sempre que for voltar uma senha comum.
 
 ## Features
 
--   [x] Avançar e retornar senhas de forma incremental
--   [x] Chamar novamente a senha atual
--   [x] Beep de alerta para a senha chamada
--   [x] Leitura da senha chamada de forma opcional
--   [ ] Organização do código e melhor distribuição entre arquivos
--   [ ] Alterações dos botões para comandos
--   [ ] Cliente-Servidor contando com o campo dos guichês
+-   [x] Avançar e retornar senhas de forma incremental.
+-   [x] Chamar novamente a senha atual.
+-   [x] Beep de alerta para a senha chamada.
+-   [x] Leitura da senha chamada de forma opcional.
+-   [ ] Organização do código e melhor distribuição entre arquivos.
+-   [ ] Alterações dos botões para comandos.
+-   [ ] Cliente-Servidor contando com o campo dos guichês.
