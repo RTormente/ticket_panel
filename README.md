@@ -33,9 +33,9 @@ git clone https://github.com/RTormente/ticket_panel.git
 cd ticket_panel
 ```
 
-Agora, basta abrir o index.html no navegador de preferência.
+Agora, basta abrir o `index.html` no navegador de preferência.
 
-OBS: O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialmente terá que desabilitar este recurso ou apertar Esc sempre que for voltar uma senha comum.
+OBS: O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialmente terá que desabilitar este recurso ou apertar `Esc` sempre que for voltar uma senha comum.
 
 ## Features
 
