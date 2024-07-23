@@ -187,7 +187,7 @@ document.getElementById("formSettingsPanel").addEventListener("reset", (e) => {
     location.reload(true);
 });
 
-document.querySelectorAll(".floatingIcon i").forEach((iconFunc) => {
+document.querySelectorAll(".floatingIcon .fa-solid").forEach((iconFunc) => {
     iconFunc.addEventListener("click", (e) => {
         document.getElementById(e.target.id).classList.toggle("fa-circle-xmark");
         document.querySelector(`div:has(#${e.target.id})`).classList.toggle("active");
