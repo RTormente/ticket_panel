@@ -1,3 +1,10 @@
+<center>
+
+<img src="./assets/img/logo_color.svg" width="300">
+
+</center>
+
+
 # Painel de Senha
 
 Um painel de senhas simples, abrangendo senhas comuns e preferenciais.
@@ -8,19 +15,16 @@ Há alerta sonoro e leitura dos números. Para leitura é usada a API Speech Syn
 
 Neste estado inicial o projeto roda de forma integral no local de abertura, não contando com a arquitetura cliente-servidor que, por exemplo, conectaria um painel com guichês, porém, se for usado se forma prática, basta usar um acesso remoto no dispositivo de painel ou um teclado numérico sem fio conectado neste
 
-<div align="center">
+<center>
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
-</div>
-
-<div align="center">
 
 ![screaming_capture](./readme/screaming_capture.gif)
 
-</div>
+</center>
 
 ## Instrução de uso
 
