@@ -26,7 +26,7 @@ Neste estado inicial o projeto roda de forma integral no local de abertura, não
 
 ## Instrução de uso
 
-É possível usá-lo diretamente neste endereço:
+É possível usá-lo em seu navegador neste endereço do <a href="https://rtormente.github.io/ticket_panel/" target="_blank">GitHub Pages</a>
 
 Ou localmente usando estes comandos:
 
