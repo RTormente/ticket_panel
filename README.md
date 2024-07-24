@@ -4,7 +4,6 @@
 
 </div>
 
-
 # Painel de Senha
 
 Um painel de senhas simples, abrangendo senhas comuns e preferenciais.
@@ -20,7 +19,6 @@ Neste estado inicial o projeto roda de forma integral no local de abertura, não
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-
 
 ![screaming_capture](./readme/screaming_capture.gif)
 
@@ -45,10 +43,13 @@ O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialment
 
 ## Features
 
--   [x] Avançar e retornar senhas de forma incremental.
--   [x] Chamar novamente a senha atual.
--   [x] Beep de alerta para a senha chamada.
--   [x] Leitura da senha chamada de forma opcional.
--   [ ] Organização do código e melhor distribuição entre arquivos.
--   [ ] Alterações dos botões para comandos.
--   [ ] Cliente-Servidor contando com o campo dos guichês.
+-   [x] Avançar e retornar senhas de forma incremental;
+-   [x] Chamar novamente a senha atual;
+-   [x] Determinar senha de inicio normal e preferencial;
+-   [x] Beep de alerta para a senha chamada;
+-   [x] Leitura da senha chamada de forma opcional;
+-   [x] Personalizar leitura;
+-   [ ] Personalizar beeps;
+-   [ ] Personalizar botões de comandos;
+-   [ ] Organização do código e melhor distribuição entre arquivos;
+-   [ ] Cliente-Servidor contando com o campo dos guichês;
