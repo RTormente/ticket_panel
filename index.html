@@ -6,7 +6,7 @@
 
         <link rel="stylesheet" href="./assets/css/index.css" />
 
-        <script type="text/javascript" src="./assets/js/index.js" defer></script>
+        <script type="module" src="./assets/js/index.js" defer></script>
 
         <link rel="icon" type="image/x-icon" href="./assets/img/logo_orig.jfif">
         <title>Painel de Senha</title>
@@ -21,11 +21,11 @@
                     <legend>Senhas:</legend>
                     <label>
                         Comum:
-                        <input type="number" name="inNormalTicket" id="inNormalTicket" min="0" max="999" />
+                        <input type="text" name="inNormalTicket" id="inNormalTicket" inputmode="numeric" onkeyup="this.value=this.value.replace(/\D/,'').replace(/(\d{3})\d+/,'$1')" /> 
                     </label>
                     <label>
                         Preferencial:
-                        <input type="number" id="inPreferTicket" name="inPreferTicket" min="0" max="999" />
+                        <input type="text" name="inPreferTicket" id="inPreferTicket" inputmode="numeric" onkeyup="this.value=this.value.replace(/\D/,'').replace(/(\d{3})\d+/,'$1')" /> 
                     </label>
                 </fieldset>
 

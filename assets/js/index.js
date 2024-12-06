@@ -1,3 +1,6 @@
+import { Ticket } from "./ticket.js";
+import { TextToSpeech } from "./texttospeech.js";
+
 let voiceList = window.speechSynthesis.getVoices().filter((i) => {
     return i.lang == navigator.language;
 });
@@ -9,27 +12,27 @@ window.speechSynthesis.addEventListener("voiceschanged", () => {
     updateDisplayTicket("o");
 });
 
-let configs = {
-    voiceRate: 1.4,
-    voicePitch: 0.9,
-    voiceVolume: 1,
-    voiceLang: navigator.language,
-
-    currentGuiche: 0,
-    normalTicket: 0,
-    preferentialTicket: 0,
+let voiceConfig = {
+    rate: 1.4,
+    pitch: 0.9,
+    volume: 1,
+    lang: navigator.language,
 };
+
+const normalTicket = new Ticket(3);
+const preferentialTicket = new Ticket(3);
+const textToSpeech = new TextToSpeech(voiceConfig);
 
 //============================================================
 
 function ticketIncrement(type) {
-    if (type == "N") configs.normalTicket++;
-    if (type == "P") configs.preferentialTicket++;
+    if (type == "N") normalTicket.increment();
+    if (type == "P") preferentialTicket.increment();
 }
 
 function ticketDecrement(type) {
-    if (type == "N" && configs.normalTicket > 0) configs.normalTicket--;
-    if (type == "P" && configs.preferentialTicket - 1 >= 0) configs.preferentialTicket--;
+    if (type == "N") normalTicket.decrement();
+    if (type == "P") preferentialTicket.decrement();
 }
 
 //============================================================
@@ -45,7 +48,7 @@ function callTicket(type) {
 
             if (document.getElementById("inVoiceList").selectedOptions[0].value != "mute")
                 setTimeout(() => {
-                    speakTicket(type, type == "P" ? configs.preferentialTicket : configs.normalTicket);
+                    speakTicket(type, type == "P" ? preferentialTicket.number : normalTicket.number);
                 }, beepDuration);
         }, beepDuration);
     }, beepDuration);
@@ -69,12 +72,11 @@ function updateDisplayTicket(opt) {
         }
     }
 
-    document.getElementById("ticketNormal").innerText = configs.normalTicket.toString().padStart(3, "0");
-    document.getElementById("inNormalTicket").value = configs.normalTicket;
+    document.getElementById("ticketNormal").innerText = normalTicket.number;
+    document.getElementById("inNormalTicket").value = normalTicket.number;
 
-    document.getElementById("ticketPreferential").innerText =
-        "P" + configs.preferentialTicket.toString().padStart(3, "0");
-    document.getElementById("inPreferTicket").value = configs.preferentialTicket;
+    document.getElementById("ticketPreferential").innerText = "P" + preferentialTicket.number;
+    document.getElementById("inPreferTicket").value = preferentialTicket.number;
 
     if (opt == "o") {
         voiceList.forEach((voice) => {
@@ -86,8 +88,8 @@ function updateDisplayTicket(opt) {
             document.getElementById("inVoiceList").appendChild(option);
         });
 
-        document.getElementById("inVoiceRate").value = configs.voiceRate;
-        document.getElementById("inVoicePitch").value = configs.voicePitch;
+        document.getElementById("inVoiceRate").value = voiceConfig.rate;
+        document.getElementById("inVoicePitch").value = voiceConfig.pitch;
     }
 }
 
@@ -165,10 +167,10 @@ document.addEventListener("keydown", (event) => {
 document.getElementById("formSettingsPanel").addEventListener("change", (e) => {
     switch (e["target"].id) {
         case "inNormalTicket":
-            configs.normalTicket = e["target"].value;
+            normalTicket.number = parseInt(e["target"].value, 10);
             break;
         case "inPreferTicket":
-            configs.preferentialTicket = e["target"].value;
+            preferentialTicket.number = parseInt(e["target"].value, 10);
             break;
         case "inVoiceRate":
             configs.voiceRate = e["target"].value;
