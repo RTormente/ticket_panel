@@ -49,7 +49,7 @@ O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialment
 - [x] Beep de alerta para a senha chamada;
 - [x] Leitura da senha chamada de forma opcional;
 - [x] Personalizar leitura;
-- [ ] Personalizar beeps;
-- [ ] Personalizar botões de comandos;
-- [ ] Organização do código e melhor distribuição entre arquivos;
-- [ ] Cliente-Servidor contando com o campo dos guichês;
+- [x] Personalizar beeps;
+- [x] Personalizar botões de comandos;
+- [ ] Organização do código e melhor distribuição entre arquivos; (10% realizado)
+- [ ] Cliente-Servidor (novo projeto);
