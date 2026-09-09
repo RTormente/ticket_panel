@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="./assets/img/logo_color.svg" width="300">
+<img src="./readme/logo_color.svg" width="300">
 
 </div>
 
@@ -43,13 +43,13 @@ O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialment
 
 ## Features
 
--   [x] Avançar e retornar senhas de forma incremental;
--   [x] Chamar novamente a senha atual;
--   [x] Determinar senha de inicio normal e preferencial;
--   [x] Beep de alerta para a senha chamada;
--   [x] Leitura da senha chamada de forma opcional;
--   [x] Personalizar leitura;
--   [ ] Personalizar beeps;
--   [ ] Personalizar botões de comandos;
--   [ ] Organização do código e melhor distribuição entre arquivos;
--   [ ] Cliente-Servidor contando com o campo dos guichês;
+- [x] Avançar e retornar senhas de forma incremental;
+- [x] Chamar novamente a senha atual;
+- [x] Determinar senha de inicio normal e preferencial;
+- [x] Beep de alerta para a senha chamada;
+- [x] Leitura da senha chamada de forma opcional;
+- [x] Personalizar leitura;
+- [ ] Personalizar beeps;
+- [ ] Personalizar botões de comandos;
+- [ ] Organização do código e melhor distribuição entre arquivos;
+- [ ] Cliente-Servidor contando com o campo dos guichês;
