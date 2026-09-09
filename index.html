@@ -1,32 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+        />
 
         <link rel="stylesheet" href="./assets/css/index.css" />
 
-        <script type="module" src="./assets/js/index.js" defer></script>
+        <script type="module" src="./assets/js/main.js" defer></script>
 
-        <link rel="icon" type="image/x-icon" href="./assets/img/logo_orig.jfif">
+        <link rel="icon" type="image/x-icon" href="./assets/img/logo_orig.jfif" />
         <title>Painel de Senha</title>
     </head>
 
     <body>
         <div id="settingsPanel" class="floatingIcon settingsPanel">
-            <button id="iconSettingsPanel" class="fa-solid fa-gear"></button>
+            <button
+                title="Abrir/Fechar Menu Configurações"
+                aria-label="Abrir/Fechar Menu Configurações"
+                id="iconSettingsPanel"
+                class="fa-solid fa-gear"
+                data-panel-toggle
+            ></button>
 
             <form id="formSettingsPanel" class="hidden">
                 <fieldset>
                     <legend>Senhas:</legend>
                     <label>
                         Comum:
-                        <input type="text" name="inNormalTicket" id="inNormalTicket" inputmode="numeric" onkeyup="this.value=this.value.replace(/\D/,'').replace(/(\d{3})\d+/,'$1')" /> 
+                        <input type="number" name="inNormalTicket" id="inNormalTicket" min="0" max="999" />
                     </label>
                     <label>
                         Preferencial:
-                        <input type="text" name="inPreferTicket" id="inPreferTicket" inputmode="numeric" onkeyup="this.value=this.value.replace(/\D/,'').replace(/(\d{3})\d+/,'$1')" /> 
+                        <input type="number" id="inPreferTicket" name="inPreferTicket" min="0" max="999" />
                     </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Beeper:</legend>
+                    <label>
+                        Duração do beep:
+                        <input type="range" name="inToneDuration" id="inToneDuration" min="50" max="1000" step="50" />
+                    </label>
+                    <label>
+                        Quantidade de beeps:
+                        <input type="number" name="inToneCount" id="inToneCount" min="1" max="4" />
+                    </label>
+                    <div id="toneSequenceControls"></div>
                 </fieldset>
 
                 <fieldset>
@@ -47,43 +70,37 @@
                     </label>
                 </fieldset>
 
-                <button type="reset" value="Salvar">Restaurar</button>
+                <button class="resetDefault" type="reset" value="Salvar">Restaurar</button>
             </form>
         </div>
 
         <div id="infoPanel" class="floatingIcon infoPanel">
-            <button id="iconInfoPanel" class="fa-solid fa-circle-info"></button>
+            <button
+                title="Abrir/Fechar Menu Informações"
+                aria-label="Abrir/Fechar Menu Informações"
+                id="iconInfoPanel"
+                class="fa-solid fa-circle-info"
+                data-panel-toggle
+            ></button>
 
             <div class="hidden">
                 <h3>Teclas de operação</h3>
 
-                <ul>
-                    <li>
-                        <p><b>+</b> Proxima senha normal</p>
-                    </li>
+                <ul id="ulInfoShortcuts"></ul>
+            </div>
+        </div>
 
-                    <li>
-                        <p><b>.</b> Proxima senha preferencial</p>
-                    </li>
-
-                    <li>
-                        <p><b>/</b> Senha normal Anterior</p>
-                    </li>
-
-                    <li>
-                        <p><b>*</b> Senha preferencial anterior</p>
-                    </li>
-
-                    <li>
-                        <p><b>-</b> Repete senha normal</p>
-                    </li>
-
-                    <li>
-                        <p><b>,</b> Repete senha preferencial</p>
-                    </li>
-                </ul>
-
-                <img src="./assets/img/keyboard.jpg" alt="teclado para iliustração" />
+        <div
+            id="shortcutModal"
+            class="modal hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="shortcutModalTitle"
+        >
+            <div class="modalContent">
+                <h2 id="shortcutModalTitle">Alterar atalho</h2>
+                <p id="shortcutModalMessage">Pressione a tecla que deseja atribuir para esta ação.</p>
+                <button id="shortcutModalCancel" type="button">Cancelar</button>
             </div>
         </div>
 

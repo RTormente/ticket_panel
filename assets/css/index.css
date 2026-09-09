@@ -23,6 +23,8 @@ fieldset {
 
 button {
     all: unset;
+    cursor: pointer;
+    border-radius: 15px;
 }
 
 button:focus {
@@ -42,7 +44,6 @@ button:focus {
     width: 1rem;
     height: 1rem;
     background-color: white;
-    cursor: pointer;
 }
 
 .floatingIcon.active {
@@ -64,6 +65,28 @@ button:focus {
     margin: 7px 0;
 }
 
+.settingsPanel .resetDefault {
+    background-color: #222;
+    border: black 2px solid;
+    border-radius: 15px;
+    padding: 8px 16px;
+    color: white;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.settingsPanel .resetDefault:hover {
+    background-color: #888;
+    border-color: #888;
+    color: black;
+}
+
+.settingsPanel .toneControlValue {
+    display: contents;
+}
+
 .infoPanel {
     top: 20px;
     right: 20px;
@@ -73,8 +96,78 @@ button:focus {
     float: right;
 }
 
+.infoPanel .fa-circle-edit {
+    float: left;
+    transform: translate(-15px, -19px);
+}
+
 .infoPanel b {
     margin-right: 15px;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
+.modalContent {
+    max-width: 90%;
+    width: 380px;
+    padding: 24px;
+    background-color: #111;
+    border: 2px solid white;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.modalContent h2 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+}
+
+.modalContent p {
+    margin: 0 0 18px;
+    line-height: 1.5;
+}
+
+.modalContent button {
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #444;
+    color: white;
+    border: 1px solid #888;
+}
+
+.modalContent button:hover {
+    background-color: #666;
+}
+
+.btnShortcutAction {
+    min-width: 10px;
+    margin-right: 10px;
+    margin-bottom: 14px;
+    padding: 8px 16px;
+    border: 2px solid black;
+    background-color: #222;
+    text-align: center;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.btnShortcutAction:hover {
+    border-color: gray;
+    background-color: #555;
+    font-weight: bold;
+}
+
+.shortcutActionButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
 }
 
 .ticketContainer {
@@ -108,7 +201,7 @@ button:focus {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 .blink {

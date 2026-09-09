@@ -1,62 +1,49 @@
-/**
- * Creates a new Ticket.
- * @class Ticket
- * @classdesc A ticket for a service queue.
- */
-export class Ticket {
-    /** @global */
-    #maxDigit;
-    #number;
+export default class Ticket {
+    static MIN_VALUE = 0;
+    static MAX_VALUE = 999;
 
-    /**
-     * @constructs Ticket
-     * @param {Number} maxDigit [Required]
-     * @param {Number} number
-     */
-    constructor(maxDigit, number = 0) {
-        this.#setmaxDigit(maxDigit);
-        this.number = number;
+    constructor(type, initial = 0) {
+        this.type = type;
+        this.current = Ticket.normalize(initial);
     }
 
-    /******************************************/
+    static normalize(value) {
+        const number = Number.parseInt(value, 10);
 
-    /**
-     * @param {Number} value [Required]
-     */
-    #setmaxDigit(value) {
-        if (!value) throw new Error("Numero máximo de digitos é obrigatório");
-        if (!Number.isInteger(value)) throw new Error("Favor informar apenas numeros inteiros");
-        if (value < 0) throw new Error("Apenas numero positivos");
-        if (value > Number.MAX_SAFE_INTEGER) throw new Error("Numero máximo de digitos  inserido é muito grande");
+        if (!Number.isFinite(number)) {
+            return Ticket.MIN_VALUE;
+        }
 
-        this.#maxDigit = value;
+        return Math.min(Ticket.MAX_VALUE, Math.max(Ticket.MIN_VALUE, number));
     }
 
-    /**
-     * @returns {String}
-     */
-    get number() {
-        return this.#number.toString().padStart(this.#maxDigit, "0");
+    set(value) {
+        this.current = Ticket.normalize(value);
     }
 
-    /**
-     * @param {Number} value [Required]
-     */
-    set number(value) {
-        if (value.toString().length > this.#maxDigit) throw new Error("Numero superior as especificações de digito");
-        if (!Number.isInteger(value)) throw new Error("Favor informar apenas numeros inteiros");
-        if (value < 0) throw new Error("Apenas numero positivos");
-
-        this.#number = value;
+    next() {
+        this.current++;
+        if (this.current > Ticket.MAX_VALUE) this.current = Ticket.MIN_VALUE;
     }
 
-    /******************************************/
-
-    increment() {
-        this.number = this.#number + 1;
+    previous() {
+        if (this.current > 0) this.current--;
     }
 
-    decrement() {
-        this.number = this.#number - 1;
+    get value() {
+        return this.current;
+    }
+
+    formatted() {
+        return this.type === "P"
+            ? `P${this.current.toString().padStart(3, "0")}`
+            : this.current.toString().padStart(3, "0");
+    }
+
+    toJSON() {
+        return {
+            type: this.type,
+            value: this.current,
+        };
     }
 }

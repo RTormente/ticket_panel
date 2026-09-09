@@ -1,5 +1,5 @@
 import { Ticket } from "./ticket.js";
-import { TextToSpeech } from "./texttospeech.js";
+/*import { TextToSpeech } from "./texttospeech.js";
 
 let voiceList = window.speechSynthesis.getVoices().filter((i) => {
     return i.lang == navigator.language;
@@ -17,22 +17,31 @@ let voiceConfig = {
     pitch: 0.9,
     volume: 1,
     lang: navigator.language,
-};
+};*/
 
-const normalTicket = new Ticket(3);
-const preferentialTicket = new Ticket(3);
-const textToSpeech = new TextToSpeech(voiceConfig);
+//================================  OBJECTS  ================================
 
-//============================================================
+const normalTicket = new Ticket("N");
+const preferentialTicket = new Ticket("P");
+//const textToSpeech = new TextToSpeech(voiceConfig);
 
-function ticketIncrement(type) {
-    if (type == "N") normalTicket.increment();
-    if (type == "P") preferentialTicket.increment();
+//================================  TICKET ACTIONS  ================================
+
+function startedTicket() {}
+
+function nextTicket(type) {
+    if (type == "N") return normalTicket.next();
+    if (type == "P") return preferentialTicket.next();
 }
 
-function ticketDecrement(type) {
-    if (type == "N") normalTicket.decrement();
-    if (type == "P") preferentialTicket.decrement();
+function previousTicket(type) {
+    if (type == "N") return normalTicket.previous();
+    if (type == "P") return preferentialTicket.previous();
+}
+
+function repeatTicket(type) {
+    if (type == "N") normalTicket.current;
+    if (type == "P") preferentialTicket.current;
 }
 
 //============================================================
@@ -136,20 +145,20 @@ function beep(frequency, duration) {
 document.addEventListener("keydown", (event) => {
     switch (event.code) {
         case "NumpadAdd":
-            ticketIncrement("N");
+            nextTicket("N");
             callTicket("N");
             break;
         case "NumpadComma":
         case "Period":
-            ticketIncrement("P");
+            nextTicket("P");
             callTicket("P");
             break;
         case "NumpadDivide":
-            ticketDecrement("N");
+            previousTicket("N");
             callTicket("N");
             break;
         case "NumpadMultiply":
-            ticketDecrement("P");
+            previousTicket("P");
             callTicket("P");
             break;
         case "NumpadSubtract":
