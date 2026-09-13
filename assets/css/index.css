@@ -1,107 +1,79 @@
-body {
-    background-color: black;
-    font-family: Arial, sans-serif;
-    color: white;
-    box-sizing: border-box;
-}
-
-ul {
-    list-style: none;
-    padding-left: 0;
-}
-
-sub {
-    font-size: 0.7rem;
-    font-style: italic;
-}
-
-fieldset {
-    margin: 20px 0;
-    padding: 20px 20px 30px 20px;
-    display: grid;
-}
-
-button {
-    all: unset;
-    cursor: pointer;
-    border-radius: 15px;
-}
-
-button:focus {
-    outline: revert;
-}
+@import "reset.css";
+@import "default.css";
 
 .floatingIcon {
     position: absolute;
     padding: 10px;
-    background-color: black;
-    border: 2px solid black;
-    border-radius: 15px;
+    background-color: var(--color-primary);
+    border: 2px solid var(--color-primary);
+    border-radius: var(--border-radius);
 }
 
 .floatingIcon .fa-solid {
     display: block;
     width: 1rem;
     height: 1rem;
-    background-color: white;
+    background-color: var(--color-secondary);
 }
 
 .floatingIcon.active {
-    border-color: white;
+    border-color: var(--color-secondary);
 }
 
 .floatingIcon > :last-child {
     margin: 15px;
 }
 
-.settingsPanel {
+#settingsPanel {
     top: 20px;
     left: 20px;
 }
 
-.settingsPanel label {
+#settingsPanel label {
     display: grid;
     grid-template-columns: 50% 50%;
     margin: 7px 0;
 }
 
-.settingsPanel .resetDefault {
-    background-color: #222;
-    border: black 2px solid;
-    border-radius: 15px;
-    padding: 8px 16px;
-    color: white;
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease,
-        color 0.2s ease;
+#settingsPanel .resetDefault {
+    background-color: var(--color-tertiary);
+    transition: color 0.2s ease;
 }
 
-.settingsPanel .resetDefault:hover {
+#settingsPanel .resetDefault:hover {
     background-color: #888;
     border-color: #888;
-    color: black;
+    color: var(--color-primary);
 }
 
-.settingsPanel .toneControlValue {
+#settingsPanel .toneControlValue {
     display: contents;
 }
 
-.infoPanel {
+#infoPanel {
     top: 20px;
     right: 20px;
 }
 
-.infoPanel > .fa-circle-xmark {
+#infoPanel > .fa-circle-xmark {
     float: right;
 }
 
-.infoPanel .fa-circle-edit {
+#infoPanel .fa-circle-edit {
     float: left;
     transform: translate(-15px, -19px);
 }
 
-.infoPanel b {
+#infoPanel h3 {
+    margin: 0 0 15px;
+}
+
+#infoPanel ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+#infoPanel b {
     margin-right: 15px;
 }
 
@@ -114,35 +86,35 @@ button:focus {
     z-index: 10;
 }
 
-.modalContent {
+#modalContent {
     max-width: 90%;
     width: 380px;
     padding: 24px;
     background-color: #111;
-    border: 2px solid white;
-    border-radius: 15px;
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--border-radius);
     text-align: center;
 }
 
-.modalContent h2 {
+#modalContent h2 {
     margin: 0 0 12px;
     font-size: 1.2rem;
 }
 
-.modalContent p {
+#modalContent p {
     margin: 0 0 18px;
     line-height: 1.5;
 }
 
-.modalContent button {
+#modalContent button {
     display: inline-block;
     padding: 10px 18px;
     background-color: #444;
-    color: white;
+    color: var(--color-secondary);
     border: 1px solid #888;
 }
 
-.modalContent button:hover {
+#modalContent button:hover {
     background-color: #666;
 }
 
@@ -150,13 +122,7 @@ button:focus {
     min-width: 10px;
     margin-right: 10px;
     margin-bottom: 14px;
-    padding: 8px 16px;
-    border: 2px solid black;
-    background-color: #222;
-    text-align: center;
-    transition:
-        background-color 0.2s ease,
-        border-color 0.2s ease;
+    background-color: var(--color-tertiary);
 }
 
 .btnShortcutAction:hover {
@@ -170,72 +136,30 @@ button:focus {
     cursor: not-allowed;
 }
 
-.ticketContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2vh;
-    font-weight: bold;
-    text-align: center;
-}
-
-.ticketNormal,
-.ticketPreferential {
-    font-size: min(40vw, 300px);
-    font-weight: bold;
-    margin: 0.3vw 0;
-}
-
 .label {
     font-size: 3vw;
     margin: 0.3vw 0;
     font-weight: bold;
 }
 
-.ticketNormal {
-    color: red;
+.ticketDisplay {
+    font-size: clamp(3rem, 40dvw, 20rem);
+    font-weight: bold;
 }
 
-.ticketPreferential {
-    color: lime;
+#ticketContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: bold;
+    text-align: center;
 }
 
-.hidden {
-    display: none !important;
+#ticketNormal {
+    color: var(--ticket-normal-color);
 }
 
-.blink {
-    animation: blink 1s linear 2;
-}
-
-.fa-gear {
-    mask: url("../img/icon_gear.svg") no-repeat center;
-}
-
-.fa-circle-info {
-    mask: url("../img/icon_info.svg") no-repeat center;
-}
-
-.fa-circle-xmark {
-    mask: url("../img/icon_xmark.svg") no-repeat center;
-}
-
-/* ================================== */
-
-@keyframes blink {
-    0% {
-        opacity: 1;
-    }
-    50% {
-        opacity: 0;
-        transform: scale(1.5);
-    }
-    51% {
-        opacity: 0;
-        transform: scale(0);
-    }
-    100% {
-        transform: scale(1);
-        opacity: 1;
-    }
+#ticketPreferential {
+    color: var(--ticket-preferential-color);
 }
