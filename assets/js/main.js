@@ -285,6 +285,7 @@ document.addEventListener("keydown", (event) => {
 /* ========================================= */
 
 ui.onFloatingIconClick();
+ui.onVoiceRangeInput();
 ui.setVoiceRate(storage.voiceRate);
 ui.setVoicePitch(storage.voicePitch);
 syncTickets();
