@@ -123,6 +123,9 @@
     margin-right: 10px;
     margin-bottom: 14px;
     background-color: var(--color-tertiary);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-color: #333;
 }
 
 .btnShortcutAction:hover {
