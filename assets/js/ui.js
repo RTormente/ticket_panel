@@ -7,7 +7,9 @@ export default class UI {
             inPreferTicket: document.getElementById("inPreferTicket"),
             inVoiceList: document.getElementById("inVoiceList"),
             inVoiceRate: document.getElementById("inVoiceRate"),
+            inVoiceRateValue: document.getElementById("inVoiceRateValue"),
             inVoicePitch: document.getElementById("inVoicePitch"),
+            inVoicePitchValue: document.getElementById("inVoicePitchValue"),
             inToneDuration: document.getElementById("inToneDuration"),
             inToneCount: document.getElementById("inToneCount"),
             toneSequenceControls: document.getElementById("toneSequenceControls"),
@@ -91,12 +93,39 @@ export default class UI {
         if (this.el.inVoiceRate) {
             this.el.inVoiceRate.value = value;
         }
+
+        if (this.el.inVoiceRateValue) {
+            this.el.inVoiceRateValue.textContent = `(${value})`;
+        }
     }
 
     setVoicePitch(value) {
         if (this.el.inVoicePitch) {
             this.el.inVoicePitch.value = value;
         }
+
+        if (this.el.inVoicePitchValue) {
+            this.el.inVoicePitchValue.textContent = `(${value})`;
+        }
+    }
+
+    onVoiceRangeInput() {
+        const ranges = [
+            [this.el.inVoiceRate, this.el.inVoiceRateValue],
+            [this.el.inVoicePitch, this.el.inVoicePitchValue],
+        ];
+
+        ranges.forEach(([input, valueLabel]) => {
+            if (!input || !valueLabel) return;
+
+            const handler = () => {
+                valueLabel.textContent = `(${input.value})`;
+            };
+
+            input.addEventListener("input", handler);
+            handler();
+            this._listeners.push(() => input.removeEventListener("input", handler));
+        });
     }
 
     renderBeeperSettings({ duration, sequence } = {}, toneOptionCount = 0) {
