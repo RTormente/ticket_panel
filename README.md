@@ -6,13 +6,13 @@
 
 # Painel de Senha
 
-Um painel de senhas simples, abrangendo senhas comuns e preferenciais desenvolvido inicialmente para atender a uma necessidade real de atendimento.
+Um painel de senhas simples, abrangendo senhas comuns e preferenciais, desenvolvido inicialmente para atender a uma necessidade real de atendimento.
 
-Possui as funcionalidades mínimas para um uso, como: avançar e retroceder senhas de forma incremental, repetir a senha atual e permite alterar as senhas atuais manualmente.
+Possui as funcionalidades mínimas para uso, como avançar e retroceder senhas de forma incremental, repetir a senha atual e permitir alterar as senhas atuais manualmente.
 
 Há alerta sonoro e leitura das senhas por voz, utilizando os recursos disponíveis no navegador do dispositivo utilizado para reproduzir o painel.
 
-A versão apresentada neste projeto foi desenvolvida como uma aplicação web independente, podendo ser executada localmente ou disponibilizada em um servidor web para acesso por URL. Sendo assim, se for usado se forma prática, basta usar um acesso remoto no dispositivo que executa o painel ou um teclado numérico sem fio conectado nele.
+A versão apresentada neste projeto foi desenvolvida como uma aplicação web independente, podendo ser executada localmente ou disponibilizada em um servidor web para acesso por URL. Sendo assim, para um uso prático, basta utilizar um acesso remoto no dispositivo que executa o painel ou um teclado numérico sem fio conectado a ele.
 
 Com a evolução do uso em ambiente real, o projeto também deu origem a uma versão cliente-servidor, desenvolvida posteriormente para atender a novas necessidades do ambiente. Essa versão será disponibilizada separadamente.
 
