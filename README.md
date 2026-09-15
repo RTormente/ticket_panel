@@ -6,13 +6,15 @@
 
 # Painel de Senha
 
-Um painel de senhas simples, abrangendo senhas comuns e preferenciais.
+Um painel de senhas simples, abrangendo senhas comuns e preferenciais, desenvolvido inicialmente para atender a uma necessidade real de atendimento.
 
-Possui as funcionalidades mínimas para um uso, como: avançar e retroceder senhas de forma incremental, repetir a senha atual e permite alterar as senhas manualmente.
+Possui as funcionalidades mínimas para uso, como avançar e retroceder senhas de forma incremental, repetir a senha atual e permitir alterar as senhas atuais manualmente.
 
-Há alerta sonoro e leitura dos números. Para leitura é usada a API Speech Synthesis, padrão dos navegadores, que se utiliza das vozes já presentes no dispositivo, portanto estas vozes variam entre dispositivos com base nos seus sistemas operacionais.
+Há alerta sonoro e leitura das senhas por voz, utilizando os recursos disponíveis no navegador do dispositivo utilizado para reproduzir o painel.
 
-Neste estado inicial o projeto roda de forma integral no local de abertura, não contando com a arquitetura cliente-servidor que, por exemplo, conectaria um painel com guichês, porém, se for usado se forma prática, basta usar um acesso remoto no dispositivo de painel ou um teclado numérico sem fio conectado neste
+A versão apresentada neste projeto foi desenvolvida como uma aplicação web independente, podendo ser executada localmente ou disponibilizada em um servidor web para acesso por URL. Sendo assim, para um uso prático, basta utilizar um acesso remoto no dispositivo que executa o painel ou um teclado numérico sem fio conectado a ele.
+
+Com a evolução do uso em ambiente real, o projeto também deu origem a uma versão cliente-servidor, desenvolvida posteriormente para atender a novas necessidades do ambiente. Essa versão será disponibilizada separadamente.
 
 <div align="center">
 
@@ -24,32 +26,62 @@ Neste estado inicial o projeto roda de forma integral no local de abertura, não
 
 </div>
 
-## Instrução de uso
+## Utilização
 
-É possível usá-lo em seu navegador neste endereço do <a href="https://rtormente.github.io/ticket_panel/" target="_blank">GitHub Pages</a>
+### Execução local
 
-Ou localmente usando estes comandos:
+Não é necessária a instalação de dependências. Basta baixar ou clonar o projeto e abrir o arquivo `index.html` no navegador.
 
 ```bash
 git clone https://github.com/RTormente/ticket_panel.git
-cd ticket_panel
 ```
 
-Agora, basta abrir o `index.html` no navegador de preferência.
+Também é possível baixar o projeto diretamente pelo GitHub.
 
-Em versões reduzidas do Linux, para se ter a leitura dos números, será necessária a instalação do pacote `speech-dispatcher`
+### Execução através de servidor web
 
-O Firefox faz uso da barra `/` para buscas rápidas, portanto, nele, inicialmente terá que desabilitar este recurso ou apertar `Esc` sempre que for voltar uma senha comum.
+Por ser uma aplicação estática, o projeto pode ser publicado em servidores web como Apache, Nginx ou outras soluções equivalentes.
 
-## Features
+Para uma utilização simples ou testes em rede, também é possível utilizar um servidor HTTP básico, como o disponibilizado pelo Python:
 
-- [x] Avançar e retornar senhas de forma incremental;
-- [x] Chamar novamente a senha atual;
-- [x] Determinar senha de inicio normal e preferencial;
-- [x] Beep de alerta para a senha chamada;
-- [x] Leitura da senha chamada de forma opcional;
-- [x] Personalizar leitura;
-- [x] Personalizar beeps;
-- [x] Personalizar botões de comandos;
-- [ ] Organização do código e melhor distribuição entre arquivos; (10% realizado)
-- [ ] Cliente-Servidor (novo projeto);
+```bash
+python -m http.server 8000
+```
+
+Executando o comando dentro da pasta do projeto, o painel estará disponível em:
+
+```text
+http://localhost:8000
+```
+
+Para acessar a partir de outro dispositivo da mesma rede, utilize o endereço IP do computador que está hospedando os arquivos:
+
+```text
+http://IP_DO_SERVIDOR:8000
+```
+
+### GitHub Pages
+
+Uma versão publicada do projeto está disponível em:
+
+https://rtormente.github.io/ticket_panel/
+
+## Voz
+
+A leitura das senhas utiliza a API `SpeechSynthesis` do navegador. As vozes disponíveis dependem do sistema operacional do dispositivo utilizado.
+
+Em alguns ambientes Linux pode ser necessário instalar o pacote `speech-dispatcher` para disponibilizar recursos de síntese de voz.
+
+As vozes disponibilizadas pelo `speech-dispatcher` podem apresentar uma qualidade bastante sintética e robótica. A instalação do pacote deve ser realizada no dispositivo que efetivamente irá reproduzir a voz do painel.
+
+## Atalhos de teclado
+
+Os atalhos das ações podem ser personalizados diretamente no painel.
+
+No Firefox, a tecla `/` pode ser utilizada pelo próprio navegador para a função de busca rápida. Caso seja atribuída a alguma ação do painel, o navegador poderá interceptá-la.
+
+Nesse caso, recomenda-se utilizar outra tecla ou desabilitar a função de busca rápida do navegador.
+
+## Licença
+
+Este projeto está disponível sob a licença MIT.
