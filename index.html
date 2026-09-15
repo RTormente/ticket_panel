@@ -7,6 +7,8 @@
             http-equiv="Content-Security-Policy"
             content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
         />
+        <meta name="author" content="Rodrigo Tormente" />
+        <meta name="description" content="Painel de senha simples, com apresentação e controle na mesma tela." />
 
         <link rel="stylesheet" href="./assets/css/index.css" />
 
@@ -17,6 +19,13 @@
     </head>
 
     <body>
+        <main id="ticketContainer">
+            <div class="label">COMUM:</div>
+            <div class="ticketDisplay" id="ticketNormal">000</div>
+            <div class="label">PREFERENCIAL:</div>
+            <div class="ticketDisplay" id="ticketPreferential">P000</div>
+        </main>
+
         <div id="settingsPanel" class="floatingIcon settingsPanel">
             <button
                 title="Abrir/Fechar Menu Configurações"
@@ -104,13 +113,6 @@
                 <p id="shortcutModalMessage">Pressione a tecla que deseja atribuir para esta ação.</p>
                 <button id="shortcutModalCancel" type="button">Cancelar</button>
             </div>
-        </div>
-
-        <div id="ticketContainer">
-            <div class="label">COMUM:</div>
-            <div class="ticketDisplay" id="ticketNormal">000</div>
-            <div class="label">PREFERENCIAL:</div>
-            <div class="ticketDisplay" id="ticketPreferential">P000</div>
         </div>
     </body>
 </html>
