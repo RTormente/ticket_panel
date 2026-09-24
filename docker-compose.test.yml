@@ -1,0 +1,18 @@
+name: ticket-panel-test-build
+
+services:
+    ticket-panel-dev:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: rtormente/ticket-panel:dev-latest
+        restart: always
+        ports:
+            - "80:3000"
+        environment:
+            TZ: America/Sao_Paulo
+        volumes:
+            - painel_data_dev:/app/backend/data
+
+volumes:
+    painel_data:
