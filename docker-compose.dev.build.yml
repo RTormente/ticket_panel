@@ -4,6 +4,8 @@ services:
     ticket-panel-dev:
         build:
             context: .
+            args:
+                NODE_ENV: development
             dockerfile: Dockerfile
         image: rtormente/ticket-panel:dev-build
         restart: always
@@ -15,4 +17,4 @@ services:
             - painel_data_dev:/app/backend/data
 
 volumes:
-    painel_data:
+    painel_data_dev:
