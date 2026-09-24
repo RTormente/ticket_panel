@@ -47,7 +47,7 @@ O serviço também pode ser executado de forma containerizada. Uma imagem Docker
 Para obter a imagem:
 
 ```bash
-docker pull rtormente/ticket-panel:dev-latest
+docker pull rtormente/ticket-panel:latest
 ```
 
 ### Painéis de atendimento
