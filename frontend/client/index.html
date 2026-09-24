@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+        />
+
+        <link rel="stylesheet" href="./css/panel.css" />
+
+        <script type="module" src="./js/panel.js" defer></script>
+
+        <link rel="icon" type="image/x-icon" href="/shared/img/logo_orig.jfif" />
+        <title>Painel de Senha</title>
+    </head>
+
+    <body>
+        <div id="settingsPanel" class="floatingIcon settingsPanel">
+            <button
+                title="Abrir/Fechar Menu Configurações"
+                aria-label="Abrir/Fechar Menu Configurações"
+                id="iconSettingsPanel"
+                class="fa-solid fa-gear"
+                data-panel-toggle
+            ></button>
+
+            <form id="formSettingsPanel" class="hidden">
+                <fieldset>
+                    <legend>Configurações:</legend>
+                    <label>
+                        Canal:
+                        <div class="selectContainer">
+                            <select id="slcChannel">
+                                <option value="0" selected>Teste</option>
+                            </select>
+                        </div>
+                    </label>
+                </fieldset>
+            </form>
+        </div>
+
+        <main id="ticketBoard">
+            <section id="channelNameArea"><h1 id="channelName">Teste</h1></section>
+            <section id="historyTicketArea">
+                <h2>Historico</h2>
+                <div id="historyTicketContainer"></div>
+            </section>
+            <section id="ticketContainer">
+                <div>
+                    <h2 class="label">COMUM:</h2>
+                    <span class="ticketNumber" id="ticketNormal">000</span>
+                </div>
+                <div>
+                    <h2 class="label">PREFERENCIAL:</h2>
+                    <span class="ticketNumber" id="ticketPreferential">P000</span>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

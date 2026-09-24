@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            http-equiv="Content-Security-Policy"
+            content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'"
+        />
+
+        <link rel="stylesheet" href="./css/admin.css" />
+
+        <script type="module" src="./js/admin.js" defer></script>
+
+        <link rel="icon" type="image/x-icon" href="/shared/img/logo_orig.jfif" />
+        <title>Painel de Senha - Admin</title>
+    </head>
+
+    <body>
+        <main class="ticketContainer">
+            <section>
+                <h2 class="label">CANAIS:</h2>
+                <div>
+                    <button
+                        type="button"
+                        id="btnRemoveChannel"
+                        class="btnActAdmin btnChannels fa-solid fa-circle-minus"
+                        aria-label="Remover canal"
+                    ></button>
+                    <div class="selectContainer">
+                        <select name="sltChannel" id="sltChannel" aria-label="Canal">
+                            <option value="0" selected>teste</option>
+                        </select>
+                    </div>
+                    <button
+                        type="button"
+                        id="btnAddChannel"
+                        class="btnActAdmin btnChannels fa-solid fa-circle-plus"
+                        aria-label="Adicionar canal"
+                    ></button>
+                </div>
+            </section>
+            <section>
+                <h2 class="label">
+                    COMUM:
+                    <button
+                        type="button"
+                        id="btnCallNormal"
+                        class="btnActAdmin btnNormalTicket fa-solid fa-rotate-right"
+                        aria-label="Repetir chamada comum"
+                    ></button>
+                </h2>
+                <div>
+                    <button
+                        type="button"
+                        id="btnPreviousNormal"
+                        class="btnActAdmin btnNormalTicket fa-solid fa-circle-minus"
+                        aria-label="Voltar senha comum"
+                    ></button>
+                    <input
+                        type="number"
+                        name="inNormalTicket"
+                        id="inNormalTicket"
+                        class="inTicket ticketNormal"
+                        min="0"
+                        max="999"
+                        size="2"
+                    />
+                    <button
+                        type="button"
+                        id="btnNextNormal"
+                        class="btnActAdmin btnNormalTicket fa-solid fa-circle-plus"
+                        aria-label="Avançar senha comum"
+                    ></button>
+                </div>
+            </section>
+            <section>
+                <h2 class="label">
+                    PREFERENCIAL:
+                    <button
+                        type="button"
+                        id="btnCallPreferential"
+                        class="btnActAdmin btnPreferentialTicket fa-solid fa-rotate-right"
+                        aria-label="Repetir chamada preferencial"
+                    ></button>
+                </h2>
+                <div>
+                    <button
+                        type="button"
+                        id="btnPreviousPreferential"
+                        class="btnActAdmin btnPreferentialTicket fa-solid fa-circle-minus"
+                        aria-label="Voltar senha preferencial"
+                    ></button>
+                    <input
+                        type="number"
+                        name="inPreferTicket"
+                        id="inPreferTicket"
+                        class="inTicket ticketPreferential"
+                        min="0"
+                        max="999"
+                        size="2"
+                    />
+                    <button
+                        type="button"
+                        id="btnNextPreferential"
+                        class="btnActAdmin btnPreferentialTicket fa-solid fa-circle-plus"
+                        aria-label="Avançar senha preferencial"
+                    ></button>
+                </div>
+            </section>
+        </main>
+
+        <div id="settingsPanel" class="floatingIcon settingsPanel">
+            <button
+                title="Abrir/Fechar Menu Configurações"
+                aria-label="Abrir/Fechar Menu Configurações"
+                id="iconSettingsPanel"
+                class="fa-solid fa-gear"
+                data-panel-toggle
+            ></button>
+
+            <form id="formSettingsPanel" class="hidden">
+                <fieldset>
+                    <legend>Beeper:</legend>
+                    <label>
+                        Duração do beep:
+                        <input type="range" name="inToneDuration" id="inToneDuration" min="50" max="1000" step="50" />
+                    </label>
+                    <label>
+                        Quantidade de beeps:
+                        <input type="number" name="inToneCount" id="inToneCount" min="1" max="4" />
+                    </label>
+                    <div id="toneSequenceControls"></div>
+                    <button type="button" id="btnTestBeeper" class="btnActSettings btnPlayTest">▶︎ Teste</button>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Voz:</legend>
+                    <label>
+                        Tipo:
+                        <select name="inVoiceList" id="inVoiceList">
+                            <option value="mute">Mudo</option>
+                        </select>
+                    </label>
+                    <label>
+                        Velocidade:
+                        <input type="range" name="inVoiceRate" id="inVoiceRate" min="0.5" max="2" step="0.1" />
+                    </label>
+                    <label>
+                        Tom:
+                        <input type="range" name="inVoicePitch" id="inVoicePitch" min="0" max="2" step="0.1" />
+                    </label>
+
+                    <button type="button" id="btnTestVoice" class="btnActSettings btnPlayTest">▶︎ Teste</button>
+                </fieldset>
+                <div>
+                    <button type="submit" id="btnSaveSettings" class="btnActSettings">Salvar</button>
+                    <button type="reset" id="btnResetSettings" class="btnActSettings" value="Salvar">Restaurar</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="infoPanel" class="floatingIcon infoPanel">
+            <button
+                title="Abrir/Fechar Menu Informações"
+                aria-label="Abrir/Fechar Menu Informações"
+                id="iconInfoPanel"
+                class="fa-solid fa-circle-info"
+                data-panel-toggle
+            ></button>
+
+            <div class="hidden">
+                <h3>Teclas de operação</h3>
+
+                <ul id="ulInfoShortcuts"></ul>
+            </div>
+        </div>
+
+        <div
+            id="shortcutModal"
+            class="modal hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="shortcutModalTitle"
+        >
+            <div class="modalContent">
+                <h2 id="shortcutModalTitle">Alterar atalho</h2>
+                <p id="shortcutModalMessage">Pressione a tecla que deseja atribuir para esta ação.</p>
+                <button id="shortcutModalCancel" type="button">Cancelar</button>
+            </div>
+        </div>
+
+        <div
+            id="deleteChannelModal"
+            class="modal hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="deleteChannelModalTitle"
+        >
+            <div class="modalContent">
+                <h2 id="deleteChannelModalTitle">Excluir canal</h2>
+                <p id="deleteChannelModalMessage">
+                    Tem certeza que deseja excluir este canal? Esta ação não pode ser desfeita.
+                </p>
+                <button id="deleteChannelModalConfirm" type="button">Excluir</button>
+                <button id="deleteChannelModalCancel" type="button">Cancelar</button>
+            </div>
+        </div>
+
+        <div
+            id="addChannelModal"
+            class="modal hidden"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="addChannelModalTitle"
+        >
+            <div class="modalContent">
+                <h2 id="addChannelModalTitle">Adicionar canal</h2>
+                <label>
+                    Nome:
+                    <input type="text" id="addChannelName" maxlength="64" />
+                </label>
+                <div>
+                    <button id="addChannelModalConfirm" type="button">Adicionar</button>
+                    <button id="addChannelModalCancel" type="button">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

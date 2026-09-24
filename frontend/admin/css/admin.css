@@ -1,0 +1,210 @@
+@import URL("/shared/css/default.css");
+
+/***************************
+ ***  Menu Configurações ***
+ ***************************/
+
+div:has(> .btnActSettings) {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btnActSettings {
+    border: black 2px solid;
+    border-radius: 15px;
+    padding: 8px 16px;
+    text-align: center;
+    width: fit-content;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.btnPlayTest {
+    background-color: cadetblue;
+    place-self: center;
+    color: black;
+    font-weight: bold;
+}
+
+.btnPlayTest:hover {
+    background-color: powderblue;
+    border-color: powderblue;
+}
+
+#btnSaveSettings {
+    background-color: darkolivegreen;
+}
+
+#btnSaveSettings:hover {
+    background-color: forestgreen;
+    border-color: forestgreen;
+}
+
+#btnResetSettings {
+    background-color: #222;
+    color: white;
+}
+
+#btnResetSettings:hover {
+    background-color: #888;
+    border-color: #888;
+    color: black;
+}
+
+.settingsPanel .toneControlValue {
+    display: contents;
+}
+
+/*************************
+ ***  Menu Informações ***
+ *************************/
+
+.infoPanel {
+    top: 20px;
+    right: 20px;
+}
+
+.infoPanel > .fa-circle-xmark {
+    float: right;
+}
+
+.infoPanel .fa-circle-edit {
+    float: left;
+    transform: translate(-15px, -19px);
+}
+
+.infoPanel b {
+    margin-right: 15px;
+}
+
+.btnShortcutAction {
+    min-width: 10px;
+    margin-right: 10px;
+    margin-bottom: 14px;
+    padding: 8px 16px;
+    border: 2px solid black;
+    background-color: #222;
+    text-align: center;
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.btnShortcutAction:hover {
+    border-color: gray;
+    background-color: #555;
+    font-weight: bold;
+}
+
+.shortcutActionButton:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/***************
+ ***  Pagina ***
+ ***************/
+
+.btnActAdmin {
+    padding: 0.85rem 1.2rem;
+}
+
+:has(> .btnActAdmin) {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    width: 100%;
+}
+
+.selectContainer {
+    width: min(100%, 320px);
+}
+
+.selectContainer select {
+    width: 100%;
+}
+
+.btnChannels {
+    background-color: darkcyan;
+    transition: background-color 0.3s ease;
+}
+
+.btnChannels:hover {
+    background-color: color-mix(in srgb, darkcyan 50%, black);
+}
+
+.ticketContainer {
+    height: 98dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ticketContainer > section {
+    width: min(100%, 720px);
+}
+
+.inTicket {
+    appearance: unset;
+    -moz-appearance: textfield;
+    background-color: #111;
+    font-size: clamp(4rem, 16vw, 12rem);
+    width: clamp(8rem, 30vw, 25rem);
+    font-weight: bold;
+    margin: 0.3vw 0;
+    text-align: center;
+    border: 1px dashed;
+    border-radius: 15px;
+    padding: 0.5rem 0.75rem;
+}
+.inTicket::-webkit-outer-spin-button,
+.inTicket::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.ticketNormal {
+    color: red;
+    transition: background-color 0.3s ease;
+}
+
+.btnNormalTicket:hover {
+    background-color: color-mix(in srgb, red 50%, black);
+}
+
+.btnNormalTicket {
+    background-color: red;
+    transition: background-color 0.3s ease;
+}
+
+.ticketPreferential {
+    color: lime;
+}
+
+.btnPreferentialTicket {
+    background-color: lime;
+    transition: background-color 0.3s ease;
+}
+
+.btnPreferentialTicket:hover {
+    background-color: color-mix(in srgb, lime 50%, black);
+}
+
+.fa-circle-plus {
+    mask: url("../img/icon_plus.svg") no-repeat center;
+}
+
+.fa-circle-minus {
+    mask: url("../img/icon_minus.svg") no-repeat center;
+}
+
+.fa-rotate-right {
+    mask: url("../img/icon_rotate_right.svg") no-repeat center;
+}

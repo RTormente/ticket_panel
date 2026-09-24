@@ -1,0 +1,225 @@
+body {
+    background-color: #333;
+    font-family: Arial, sans-serif;
+    color: white;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+sub {
+    font-size: 0.7rem;
+    font-style: italic;
+}
+
+h1 {
+    font-size: 10vh;
+    font-weight: boald;
+    text-transform: uppercase;
+}
+
+fieldset {
+    margin: 20px 0;
+    padding: 20px 20px 30px 20px;
+    display: grid;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    border-radius: 15px;
+}
+
+button:focus {
+    outline: revert;
+}
+
+select {
+    appearance: unset;
+    border: 2px solid white;
+    border-radius: 15px;
+    padding: 8px 16px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    position: relative;
+    width: 200px;
+}
+
+section {
+    background-color: black;
+}
+
+.selectContainer {
+    position: relative;
+    display: flex;
+    width: fit-content;
+}
+
+.selectContainer::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    border-width: 6px 5px 0 5px;
+    border-style: solid;
+    border-color: #fff transparent transparent transparent;
+    pointer-events: none;
+}
+
+.selectContainer:has(select:open)::after {
+    border-width: 0 5px 6px 5px;
+    border-color: transparent transparent #fff transparent;
+    pointer-events: none;
+}
+
+.floatingIcon {
+    position: absolute;
+    padding: 10px;
+    background-color: black;
+    border: 2px solid black;
+    border-radius: 15px;
+}
+
+.floatingIcon .fa-solid {
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    background-color: white;
+}
+
+.floatingIcon.active {
+    border-color: white;
+}
+
+.floatingIcon > :last-child {
+    margin: 15px;
+}
+
+.settingsPanel {
+    top: 20px;
+    left: 20px;
+}
+
+.settingsPanel label {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 7px 0;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 10;
+}
+
+.modalContent {
+    max-width: 90%;
+    width: 380px;
+    padding: 24px;
+    background-color: #111;
+    border: 2px solid white;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.modalContent h2 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+}
+
+.modalContent p {
+    margin: 0 0 18px;
+    line-height: 1.5;
+}
+
+.modalContent button {
+    margin: 12px;
+    display: inline-block;
+    padding: 10px 18px;
+    background-color: #444;
+    color: white;
+    border: 1px solid #888;
+}
+
+.modalContent button:hover {
+    background-color: #666;
+}
+/*
+.ticketContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2vh;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ticketNormal,
+.ticketPreferential {
+    font-size: min(40vw, 300px);
+    font-weight: bold;
+    margin: 0.3vw 0;
+}
+*/
+.label {
+    font-size: 4vh;
+    margin: 1.5vh 0;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+/*
+.ticketNormal {
+    color: red;
+}
+
+.ticketPreferential {
+    color: lime;
+}
+*/
+.hidden {
+    display: none !important;
+}
+
+.blink {
+    animation: blink 1s linear 2;
+}
+
+.fa-gear {
+    mask: url("/shared/img/icon_gear.svg") no-repeat center;
+}
+
+.fa-circle-info {
+    mask: url("../img/icon_info.svg") no-repeat center;
+}
+
+.fa-circle-xmark {
+    mask: url("/shared/img/icon_xmark.svg") no-repeat center;
+}
+
+/* ================================== */
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+        transform: scale(1.5);
+    }
+    51% {
+        opacity: 0;
+        transform: scale(0);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}

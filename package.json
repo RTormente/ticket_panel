@@ -1,0 +1,13 @@
+{
+    "name": "ticket-panel-client-server",
+    "version": "1.0.0",
+    "description": "Painel de senhas cliente-servidor com backend Node e persistência SQLite",
+    "main": "backend/src/server.js",
+    "scripts": {
+        "start": "node backend/src/server.js"
+    },
+    "dependencies": {
+        "express": "^4.18.4",
+        "sqlite3": "^5.1.6"
+    }
+}

@@ -1,0 +1,111 @@
+@import URL("/shared/css/default.css");
+
+#ticketBoard {
+    height: 98dvh;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: 1fr 1fr;
+    grid-template-areas:
+        "title tickets"
+        "hystory tickets";
+    gap: 20px;
+}
+
+#ticketBoard > section {
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+}
+
+#channelNameArea {
+    grid-area: title;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+#channelName {
+    text-align: center;
+    word-break: break-word;
+}
+
+#historyTicketArea {
+    grid-area: hystory;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+#historyTicketContainer {
+    flex: 1;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.historyList {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.historyItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.08);
+    font-size: 2rem;
+}
+
+.historyTicket {
+    font-weight: bold;
+}
+
+.historyMeta {
+    color: #d9d9d9;
+    font-variant-numeric: tabular-nums;
+}
+
+.historyEmpty {
+    color: #d9d9d9;
+    font-style: italic;
+    margin: auto;
+}
+
+#ticketContainer {
+    grid-area: tickets;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    text-align: center;
+}
+
+.ticketNumber {
+    font-size: min(40vw, 300px);
+    font-weight: bold;
+    margin: 0.3vw 0;
+    display: inline-block;
+}
+
+#ticketNormal {
+    color: red;
+}
+
+#ticketPreferential {
+    color: lime;
+}

@@ -1,0 +1,37 @@
+# Git and editor metadata
+.git
+**/.git
+.vscode/
+.idea/
+.agents/
+.codex/
+
+# Dependency folders and logs
+node_modules/
+**/node_modules/
+npm-debug.log*
+*.log
+*.pid
+*.seed
+*.pid.lock
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+
+# Local SQLite database data
+backend/data/*.db
+backend/data/*.sqlite
+backend/data/*.sqlite3
+
+# Documentation and non-runtime files
+README.md
+LICENSE
+readme/
+
+# Docker metadata not needed in the build context
+.dockerignore
+.gitignore
+Dockerfile*
+docker-compose*
