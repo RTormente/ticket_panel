@@ -4,9 +4,15 @@ WORKDIR /app
 
 COPY . .
 
-RUN npm ci
+ARG NODE_ENV=production
 
-ENV NODE_ENV=development
+RUN if [ "$NODE_ENV" = "development" ]; then \
+        npm ci; \
+    else \
+        npm ci --omit=dev; \
+    fi
+
+ENV NODE_ENV=$NODE_ENV
 ENV PORT=3000
 
 EXPOSE 3000
