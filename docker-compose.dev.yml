@@ -2,7 +2,7 @@ name: ticket-panel-dev-local
 
 services:
     painel-node-dev-local:
-        image: node:26-bookworm-slim
+        image: node:26-bookworm
         restart: always
         working_dir: /app
         ports:
