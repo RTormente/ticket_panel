@@ -1,4 +1,4 @@
-FROM node:26-bookworm AS builder
+FROM node:26-trixie AS builder
 
 WORKDIR /app
 
@@ -14,7 +14,7 @@ RUN if [ "$NODE_ENV" = "development" ]; then \
 
 COPY . .
 
-FROM node:26-bookworm-slim AS runner
+FROM node:26-trixie-slim AS runner
 
 WORKDIR /app
 

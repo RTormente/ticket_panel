@@ -2,7 +2,7 @@ name: ticket-panel-dev-local
 
 services:
     painel-node-dev-local:
-        image: node:26-bookworm
+        image: node:26-trixie
         restart: always
         working_dir: /app
         ports:
