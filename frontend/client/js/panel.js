@@ -19,6 +19,7 @@ const DEFAULTS = Object.freeze({
 });
 
 const POLLING_INTERVAL_MS = 2000;
+const CHANNEL_REFRESH_INTERVAL_MS = POLLING_INTERVAL_MS * 2;
 
 const CHANNEL_STORAGE_KEY = "ticket_panel_selected_channel_client";
 
@@ -33,6 +34,7 @@ const speech = new Speech({
 
 let currentState = null;
 let pollTimeout = null;
+let channelsRefreshTimeout = null;
 let isDestroyed = false;
 let activeChannel = 0;
 let lastAnnouncedHistoryId = null;
@@ -49,33 +51,38 @@ function getLatestHistoryId(history = []) {
 function getChannelFromURL() {
     const params = new URLSearchParams(window.location.search);
     const raw = params.get("channel");
+    if (raw === null) return undefined;
     const num = Number.parseInt(raw, 10);
-    if (Number.isFinite(num)) return num;
+    return Number.isFinite(num) && num >= 0 ? num : null;
+}
+
+function getChannelFromStorage() {
     try {
         const stored = Number.parseInt(localStorage.getItem(CHANNEL_STORAGE_KEY), 10);
-        return Number.isFinite(stored) ? stored : 0;
+        return Number.isFinite(stored) && stored >= 0 ? stored : null;
     } catch (e) {
-        return 0;
+        return null;
     }
+}
+
+function channelExists(channels, channelId) {
+    return channels.some((channel) => Number(channel.id) === channelId);
+}
+
+function resolveActiveChannel(channels) {
+    const channelFromURL = getChannelFromURL();
+    if (channelFromURL !== undefined) {
+        return channelFromURL !== null && channelExists(channels, channelFromURL) ? channelFromURL : 0;
+    }
+
+    const channelFromStorage = getChannelFromStorage();
+    return channelFromStorage !== null && channelExists(channels, channelFromStorage) ? channelFromStorage : 0;
 }
 
 function setChannelInURL(channelId) {
     const url = new URL(window.location.href);
     url.searchParams.set("channel", String(channelId));
     window.history.replaceState(null, "", url.toString());
-}
-
-/* ===================================== */
-/* Canais                                */
-/* ===================================== */
-
-async function loadAndPopulateChannels() {
-    try {
-        const channels = await fetchChannels();
-        ui.populateChannels(channels, activeChannel);
-    } catch (e) {
-        console.warn(e);
-    }
 }
 
 /* ===================================== */
@@ -193,6 +200,23 @@ async function pollState() {
     }
 }
 
+async function refreshChannels() {
+    try {
+        const channels = await fetchChannels();
+        if (!channelExists(channels, activeChannel)) {
+            activeChannel = 0;
+            currentState = null;
+        }
+        ui.populateChannels(channels, activeChannel);
+    } catch (error) {
+        console.warn(error);
+    }
+
+    if (!isDestroyed) {
+        channelsRefreshTimeout = window.setTimeout(refreshChannels, CHANNEL_REFRESH_INTERVAL_MS);
+    }
+}
+
 function switchChannel(channelId) {
     activeChannel = channelId;
     currentState = null;
@@ -204,6 +228,8 @@ function switchChannel(channelId) {
     }
 }
 
+window.ticketPanel = Object.freeze({ getChannelFromURL });
+
 /* ===================================== */
 /* Inicialização                         */
 /* ===================================== */
@@ -211,19 +237,28 @@ function switchChannel(channelId) {
 window.addEventListener("beforeunload", () => {
     isDestroyed = true;
     if (pollTimeout) clearTimeout(pollTimeout);
+    if (channelsRefreshTimeout) clearTimeout(channelsRefreshTimeout);
     speech.destroy();
     beeper.destroy();
     ui.destroy();
 });
 
 async function initialize() {
-    activeChannel = getChannelFromURL();
-    await loadAndPopulateChannels();
+    let channels = [];
+    try {
+        channels = await fetchChannels();
+        activeChannel = resolveActiveChannel(channels);
+        ui.populateChannels(channels, activeChannel);
+    } catch (e) {
+        console.warn(e);
+        activeChannel = 0;
+    }
     ui.onChannelChange((num) => {
         switchChannel(num);
     });
     ui.onFloatingIconClick();
     pollState();
+    channelsRefreshTimeout = window.setTimeout(refreshChannels, CHANNEL_REFRESH_INTERVAL_MS);
 }
 
 initialize();
