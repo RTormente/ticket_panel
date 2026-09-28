@@ -15,7 +15,7 @@ Cada painel possui sua própria identificação e configurações. A identifica�
 A aplicação é dividida em duas áreas principais:
 
 - **Painel de exibição:** destinado à apresentação em uma TV ou outro dispositivo de exibição, mostrando a senha chamada, o nome do painel e o histórico das últimas senhas chamadas.
-- **Painel de controle:** utilizado para selecionar qual painel será manipulado e realizar as operações de controle das senhas, pipe e voz.
+- **Painel de controle:** utilizado para selecionar qual painel será manipulado e realizar as operações de controle das senhas, bipe e voz.
 
 Cada painel possui configurações próprias, incluindo voz, bipe e atalhos de teclado.
 
@@ -27,6 +27,7 @@ A leitura das senhas utiliza os recursos de síntese de voz disponíveis no nave
 ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Node.js](https://img.shields.io/badge/node.js-%23339933.svg?style=for-the-badge&logo=node.js&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLite-003B57?style=for-the-badge&logo=SQLite&logoColor=FFFFFF)
 
 ![screaming_capture](./readme/screaming_capture.gif)
 
@@ -36,11 +37,23 @@ A leitura das senhas utiliza os recursos de síntese de voz disponíveis no nave
 
 ### Arquitetura
 
-A aplicação utiliza uma arquitetura cliente-servidor, desenvolvido em Node.js, responsável pelo processamento e pela comunicação entre os clientes.
+A aplicação utiliza uma arquitetura cliente-servidor, desenvolvida em Node.js, responsável pelo processamento e pela comunicação entre os clientes.
 
 Os dispositivos utilizados para exibição e controle podem acessar o sistema por meio de uma URL na rede.
 
 A tela de exibição pode permanecer aberta na TV ou computador destinado à apresentação das chamadas, enquanto a tela de controle pode ser utilizada em outro dispositivo para realizar as operações sobre os painéis.
+
+### Endpoints
+
+A aplicação disponibiliza dois endpoints principais:
+
+- **`/`** — painel de exibição, destinado à TV ou outro dispositivo utilizado para apresentar as chamadas.
+- **`/admin`** — painel de controle, utilizado para operar as senhas e gerenciar os painéis.
+
+Considerando que a aplicação esteja disponível em `http://servidor:30000`:
+
+- `http://servidor:30000/` — painel de exibição;
+- `http://servidor:30000/admin` — painel de controle.
 
 O serviço também pode ser executado de forma containerizada. Uma imagem Docker da aplicação está disponível no Docker Hub, permitindo utilizar o sistema sem a necessidade de configurar manualmente o ambiente de execução do servidor.
 
@@ -52,7 +65,7 @@ docker pull rtormente/ticket-panel:latest
 
 ### Painéis de atendimento
 
-Cada painel possui uma identificação própria, utilizada para indicar o local ou finalidade do atendimento, como: recepção, triagem, entre outros.
+Cada painel possui uma identificação própria, utilizada para indicar o local ou finalidade do atendimento, como recepção, triagem, entre outros.
 
 Na tela de controle, o painel desejado é selecionado por meio de um campo de seleção. A partir dessa seleção, as operações de chamada e alteração de senha são direcionadas ao painel correspondente.
 
@@ -65,7 +78,7 @@ O sistema permite:
 - Avançar a senha;
 - Retroceder a senha;
 - Repetir a senha atual;
-- Alterar manualmente a senha;
+- Alterar manualmente a senha.
 
 As chamadas realizadas são refletidas automaticamente no painel de exibição correspondente.
 
@@ -99,6 +112,32 @@ Os atalhos das ações podem ser personalizados diretamente no painel de control
 No Firefox, a tecla `/` pode ser utilizada pelo próprio navegador para a função de busca rápida. Caso seja atribuída a alguma ação do painel, o navegador poderá interceptá-la.
 
 Nesse caso, recomenda-se utilizar outra tecla ou desabilitar a função de busca rápida do navegador.
+
+## Docker
+
+A aplicação pode ser executada de forma containerizada. Uma imagem Docker está disponível no Docker Hub.
+
+Para obter a versão estável atual:
+
+```bash
+docker pull rtormente/ticket-panel:latest
+```
+
+A imagem utiliza a porta `30000` no container. Para executar:
+
+```bash
+docker run -d \
+  --name ticket-panel \
+  -p 30000:30000 \
+  rtormente/ticket-panel:latest
+```
+
+Após iniciar o container, os endpoints estarão disponíveis em:
+
+- `http://localhost:30000/` — painel de exibição;
+- `http://localhost:30000/admin` — painel de controle.
+
+A imagem Docker atualmente é publicada para `linux/amd64`.
 
 ## Licença
 
